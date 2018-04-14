@@ -6,11 +6,11 @@ import { Game } from '../games';
 import { GameService } from '../game.service';
 
 @Component({
-  selector: 'app-game-detail',
-  templateUrl: './game-detail.component.html',
-  styleUrls: ['./game-detail.component.css']
+  selector: 'app-game-detail-user',
+  templateUrl: './game-detail-user.component.html',
+  styleUrls: ['./game-detail-user.component.css']
 })
-export class GameDetailComponent implements OnInit {
+export class GameDetailUserComponent implements OnInit {
   @Input() game: Game;
   constructor(
     private route: ActivatedRoute,
@@ -27,12 +27,5 @@ export class GameDetailComponent implements OnInit {
     this.gameService.getGame(id)
       .subscribe(game => this.game = game);
   }
-  save(): void {
-   this.gameService.updateGame(this.game)
-     .subscribe(() => this.goBack());
- }
 
-  goBack(): void {
-  this.location.back();
-}
 }
