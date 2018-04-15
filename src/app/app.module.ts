@@ -16,6 +16,8 @@ import { GameSearchComponent } from './game-search/game-search.component';
 import { GameDetailUserComponent } from './game-detail-user/game-detail-user.component';
 import { GamesUserComponent } from './games-user/games-user.component';
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { DashboardUserComponent } from './dashboard-user/dashboard-user.componen
     GameDetailUserComponent,
     GamesUserComponent,
     DashboardUserComponent,
+    LoginComponent,
+    RegisterComponent,
 
   ],
   imports: [
