@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
 import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -14,6 +13,11 @@ import { MessageService } from './message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GameSearchComponent } from './game-search/game-search.component';
+import { GameDetailUserComponent } from './game-detail-user/game-detail-user.component';
+import { GamesUserComponent } from './games-user/games-user.component';
+import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,13 @@ import { GameSearchComponent } from './game-search/game-search.component';
     GameDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    GameSearchComponent
+    GameSearchComponent,
+    GameDetailUserComponent,
+    GamesUserComponent,
+    DashboardUserComponent,
+    LoginComponent,
+    RegisterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -33,13 +43,12 @@ import { GameSearchComponent } from './game-search/game-search.component';
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-)
+
   ],
   providers: [
     GameService,
     MessageService,
+
   /* . . . */],
   bootstrap: [AppComponent]
 })
