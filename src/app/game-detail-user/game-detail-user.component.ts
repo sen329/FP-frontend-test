@@ -11,7 +11,9 @@ import { GameService } from '../game.service';
   styleUrls: ['./game-detail-user.component.css']
 })
 export class GameDetailUserComponent implements OnInit {
-  @Input() game: Game;
+
+  game: Game;
+
   constructor(
     private route: ActivatedRoute,
     private gameService: GameService,
@@ -25,7 +27,17 @@ export class GameDetailUserComponent implements OnInit {
   getGame(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.gameService.getGame(id)
-      .subscribe(game => this.game = game);
+      .subscribe(game => {
+        this.game = game;
+        console.log(game);
+      },
+      err=> console.log(err.error)
+    );
   }
+  goBack(): void {
+  this.location.back();
+}
+
+
 
 }

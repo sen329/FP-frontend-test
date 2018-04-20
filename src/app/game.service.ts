@@ -5,42 +5,54 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
+import {  Response, Headers, RequestOptions } from '@angular/http';
 
 import { Game } from './games';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { Comment } from './comment';
+import { AuthService } from './auth.service';
+
 
 @Injectable()
 export class GameService {
 
-  private gamesUrl = 'http://localhost:8000/api/game/';  // URL to web api
+  private gamesUrl = 'http://localhost:8000/api/game';  // URL to web api
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private auth: AuthService) { }
 
   getGames(): Observable<Game[]>{
-    return this.http.get<Game[]>(this.gamesUrl);
+    return this.http.get<Game[]>(this.gamesUrl, this.auth.getHeader());
 
   }
   getGame(id: number): Observable<Game> {
-    const url = `${this.gamesUrl}/${id}`;
-  return this.http.get<Game>(url);
+    const url = `${this.gamesUrl}/comment/${id}`;
+    console.log(this.auth.getHeader());
+  return this.http.get<Game>(url, this.auth.getHeader());
   }
-  updateGame (game: Game): Observable<any> {
-  return this.http.put(this.gamesUrl, game, httpOptions);
+  updateGame (game: Game, id: number): Observable<any> {
+    const url = `${this.gamesUrl}/comment/${id}`;
+
+    return this.http.put(url,game,this.auth.getHeader());
 }
 
 addGame (game: Game): Observable<Game> {
-  return this.http.post<Game>(this.gamesUrl, game, httpOptions);
+  return this.http.post<Game>(this.gamesUrl, game, this.auth.getHeader());
 }
 
 deleteGame (game: Game | number): Observable<Game> {
   const id = typeof game === 'number' ? game : game.id;
   const url = `${this.gamesUrl}/${id}`;
 
-  return this.http.delete<Game>(url, httpOptions);
+  return this.http.delete<Game>(url, this.auth.getHeader());
+}
+
+postComment (id: number, comment: Comment): Observable<any>{
+  const url = `${this.gamesUrl}/comment/${id}`;
+  let com = JSON.stringify({comment});
+  console.log(com);
+  return this.http.post(url,com, this.auth.getHeader());
 }
 
 searchGames(term: string): Observable<Game[]> {

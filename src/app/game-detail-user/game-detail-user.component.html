@@ -5,6 +5,9 @@
   <div>
     {{ game.description }}
   </div>
+  <ul>
+    <li *ngFor="let comment of game.comment">{{comment.comment}}</li>
+  </ul>
 </div>
 
 <button (click)="goBack()">go back</button>

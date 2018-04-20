@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../games';
 import { GameService } from '../game.service';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
@@ -9,7 +10,10 @@ import { GameService } from '../game.service';
 export class GamesComponent implements OnInit {
   games: Game[];
 
-  constructor(private gameService: GameService) { }
+
+
+  constructor(private gameService: GameService,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.getGames()
@@ -27,8 +31,18 @@ export class GamesComponent implements OnInit {
     });
 }
 
-delete(game: Game): void {
-  this.games = this.games.filter(h => h !== game);
-  this.gameService.deleteGame(game).subscribe();
+  delete(game: Game): void {
+    this.games = this.games.filter(h => h !== game);
+    this.gameService.deleteGame(game).subscribe();
+  }
+
+  get isLoggedin(){
+    return !!localStorage.getItem('token');
+  }
+get Username(){
+  return localStorage.getItem('username')
+
 }
+
+
 }

@@ -7,8 +7,14 @@
       <input [(ngModel)]="game.description" placeholder="description"/>
     </label>
   </div>
-  <div>
+  <ul>
+    <li *ngFor="let comment of game.comment">{{comment.comment}}</li>
+  </ul>
+</div>
 
+<app-comment></app-comment>
+
+<button (click)="logout()">logout</button>
 
 <button (click)="save()">save</button>
 

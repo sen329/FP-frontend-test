@@ -6,6 +6,9 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
 import { GamesUserComponent } from './games-user/games-user.component';
 import { GameDetailUserComponent } from './game-detail-user/game-detail-user.component';
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { UserComponent } from './user/user.component'
 
 
 const routes: Routes = [
@@ -16,8 +19,9 @@ const routes: Routes = [
   { path: 'editAdmin', component: GamesComponent },
   { path: 'detailEdit/:id', component: GameDetailComponent},
   { path: 'editAdmin', component: GamesComponent },
-
-
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: UserComponent }
 ];
 
 @NgModule({

@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { Game } from '../games';
 import { GameService } from '../game.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -15,7 +16,8 @@ export class GameDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private gameService: GameService,
-    private location: Location
+    private location: Location,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -27,12 +29,19 @@ export class GameDetailComponent implements OnInit {
     this.gameService.getGame(id)
       .subscribe(game => this.game = game);
   }
+
   save(): void {
-   this.gameService.updateGame(this.game)
+    const id = +this.route.snapshot.paramMap.get('id');
+   this.gameService.updateGame(this.game, id)
      .subscribe(() => this.goBack());
  }
+
 
   goBack(): void {
   this.location.back();
 }
+
+  logout(){
+    this.authService.logout();
+  }
 }

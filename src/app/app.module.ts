@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule }    from '@angular/common/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { GamesComponent } from './games/games.component';
@@ -16,6 +17,14 @@ import { GameSearchComponent } from './game-search/game-search.component';
 import { GameDetailUserComponent } from './game-detail-user/game-detail-user.component';
 import { GamesUserComponent } from './games-user/games-user.component';
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthService } from './auth.service';
+import { CommentComponent } from './comment/comment.component';
+import { UserComponent } from './user/user.component';
+import { UserService } from './user.service';
+import { NavComponent } from './nav/nav.component'
+
 
 
 @NgModule({
@@ -29,6 +38,12 @@ import { DashboardUserComponent } from './dashboard-user/dashboard-user.componen
     GameDetailUserComponent,
     GamesUserComponent,
     DashboardUserComponent,
+    LoginComponent,
+    RegisterComponent,
+    CommentComponent,
+    UserComponent,
+    NavComponent,
+
 
 
   ],
@@ -37,15 +52,15 @@ import { DashboardUserComponent } from './dashboard-user/dashboard-user.componen
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
+    HttpModule,
+    JsonpModule,
 
   ],
   providers: [
     GameService,
     MessageService,
+    AuthService,
+    UserService
 
   /* . . . */],
   bootstrap: [AppComponent]
