@@ -1,13 +1,11 @@
-<nav>
+<nav *ngIf="!isLoggedIn">
   <a routerLink="/dashboard">Dashboard</a>
   <a routerLink="/games">Games</a>
-
-</nav>
-<nav *ngIf="!isLoggedIn">
 <a routerLink="/login">Login</a>
 <a routerLink="/register">Register</a>
 </nav>
 
 <nav *ngIf="isLoggedIn">
+  <a routerLink="/editAdmin">Games</a>
   <button (click)="logout()">logout</button>
 </nav>

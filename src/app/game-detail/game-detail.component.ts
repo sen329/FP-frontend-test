@@ -39,7 +39,7 @@ export class GameDetailComponent implements OnInit {
  }
 
  delete(): void{
-   const id = +this.route.snapshot.paramMap.get('id');
+   const id = this.comment.id;
    this.gameService.deleteComment(id, this.comment)
    .subscribe(res =>{
      console.log('should be deleted')
