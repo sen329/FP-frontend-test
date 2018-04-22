@@ -11,16 +11,14 @@
 </ul>
 
 <div>
-  <label>Game title:
-    <input #gameTitle />
-  </label>
-  <label>Game description:
-    <input #gameDescription />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(gameTitle.value); gameTitle.value=''">
-    add
-  </button>
+  <form method="post" (submit)="addGame()">
+      <label>title: </label>
+      <input type="text" name="title" [(ngModel)]="add.title" class="form-control">
+      <label>description: </label>
+      <input type="description" name="description" [(ngModel)]="add.description" class="form-control">
+      <br>
+      <button type="submit" class="btn btn-primary">Add Game</button>
+  </form>
 </div>
 
 <button (click)="logout()">logout</button>

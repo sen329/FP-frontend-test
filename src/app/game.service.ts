@@ -17,6 +17,7 @@ import { AuthService } from './auth.service';
 export class GameService {
 
   private gamesUrl = 'http://localhost:8000/api/game';  // URL to web api
+  private commentUrl = 'http://localhost:8000/api/comment';
 
   constructor(
     private http: HttpClient,
@@ -51,8 +52,12 @@ deleteGame (game: Game | number): Observable<Game> {
 postComment (id: number, comment: Comment): Observable<any>{
   const url = `${this.gamesUrl}/comment/${id}`;
   let com = JSON.stringify({comment});
-  console.log(com);
   return this.http.post(url,com, this.auth.getHeader());
+}
+
+deleteComment (id: number, comment: Comment): Observable<any>{
+  const url = `${this.commentUrl}/${id}`;
+  return this.http.delete(url, this.auth.getHeader());
 }
 
 searchGames(term: string): Observable<Game[]> {

@@ -9,7 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class GamesComponent implements OnInit {
   games: Game[];
-
+  add: any = {};
 
 
   constructor(private gameService: GameService,
@@ -22,18 +22,24 @@ export class GamesComponent implements OnInit {
     this.gameService.getGames()
       .subscribe(games => this.games = games);
   }
-  add(title: string): void {
-  title = title.trim();
-  if (!title) { return; }
-  this.gameService.addGame({ title } as Game)
-    .subscribe(game => {
-      this.games.push(game);
-    });
+  addGame(): void {
+  this.gameService.addGame(this.add)
+  .subscribe(res => {
+    window.location.reload();
+  },
+  err=> console.log(err.error)
+);
+
 }
 
   delete(game: Game): void {
     this.games = this.games.filter(h => h !== game);
-    this.gameService.deleteGame(game).subscribe();
+    this.gameService.deleteGame(game)
+      .subscribe(res => {
+        window.location.reload();
+      },
+      err=> console.log(err.error)
+    );
   }
 
   get isLoggedin(){

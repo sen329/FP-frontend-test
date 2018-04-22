@@ -5,6 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Game } from '../games';
 import { GameService } from '../game.service';
 import { AuthService } from '../auth.service';
+import { Comment } from '../comment';
 
 @Component({
   selector: 'app-game-detail',
@@ -13,6 +14,7 @@ import { AuthService } from '../auth.service';
 })
 export class GameDetailComponent implements OnInit {
   @Input() game: Game;
+  comment: Comment;
   constructor(
     private route: ActivatedRoute,
     private gameService: GameService,
@@ -36,6 +38,16 @@ export class GameDetailComponent implements OnInit {
      .subscribe(() => this.goBack());
  }
 
+ delete(): void{
+   const id = +this.route.snapshot.paramMap.get('id');
+   this.gameService.deleteComment(id, this.comment)
+   .subscribe(res =>{
+     console.log('should be deleted')
+       window.location.reload();
+   },
+   err=> console.log(err.error)
+ );
+ }
 
   goBack(): void {
   this.location.back();
