@@ -38,9 +38,9 @@ export class GameDetailComponent implements OnInit {
      .subscribe(() => this.goBack());
  }
 
- delete(): void{
-   const id = this.comment.id;
-   this.gameService.deleteComment(id, this.comment)
+ delete(id): void{
+   console.log(id);
+   this.gameService.deleteComment(id)
    .subscribe(res =>{
      console.log('should be deleted')
        window.location.reload();

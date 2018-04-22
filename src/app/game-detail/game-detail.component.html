@@ -8,7 +8,7 @@
     </label>
   </div>
   <ul>
-    <li *ngFor="let comment of game.comment">{{comment.comment}}<button (click)="delete()">delete</button></li>
+    <li *ngFor="let comment of game.comment">{{comment.comment}}<button (click)="delete(comment.id)">delete</button></li>
 
   </ul>
 </div>

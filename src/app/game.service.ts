@@ -55,7 +55,7 @@ postComment (id: number, comment: Comment): Observable<any>{
   return this.http.post(url,com, this.auth.getHeader());
 }
 
-deleteComment (id: number, comment: Comment): Observable<any>{
+deleteComment (id: number): Observable<any>{
   const url = `${this.commentUrl}/${id}`;
   return this.http.delete(url, this.auth.getHeader());
 }
