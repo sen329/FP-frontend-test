@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 @Injectable()
 export class AuthService {
 
-  loginUrl = 'https://api.fp-binusian.club/login';
+  loginUrl = 'https://api.fp-binusian.club/api/login';
   registerUrl = 'https://api.fp-binusian.club/api/register'
   token = localStorage.token;
   httpOptions;

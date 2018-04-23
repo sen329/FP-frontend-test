@@ -250,7 +250,7 @@ var AuthService = /** @class */ (function () {
     function AuthService(http, router) {
         this.http = http;
         this.router = router;
-        this.loginUrl = 'https://api.fp-binusian.club/login';
+        this.loginUrl = 'https://api.fp-binusian.club/api/login';
         this.registerUrl = 'https://api.fp-binusian.club/api/register';
         this.token = localStorage.token;
         this.data = {};
