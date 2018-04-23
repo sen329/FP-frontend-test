@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  private userUrl = 'http://localhost:8000/api/user';
+  private userUrl = 'https://api.fp-binusian.club/api/user';
 
   constructor(
     private http: HttpClient

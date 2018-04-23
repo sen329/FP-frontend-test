@@ -16,8 +16,8 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class GameService {
 
-  private gamesUrl = 'http://localhost:8000/api/game';  // URL to web api
-  private commentUrl = 'http://localhost:8000/api/comment';
+  private gamesUrl = 'https://api.fp-binusian.club/api/game';  // URL to web api
+  private commentUrl = 'https://api.fp-binusian.club/api/comment';
 
   constructor(
     private http: HttpClient,
