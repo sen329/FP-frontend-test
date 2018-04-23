@@ -33,7 +33,7 @@ export class GameService {
   return this.http.get<Game>(url, this.auth.getHeader());
   }
   updateGame (game: Game, id: number): Observable<any> {
-    const url = `${this.gamesUrl}/comment/${id}`;
+    const url = `${this.gamesUrl}/${id}`;
 
     return this.http.put(url,game,this.auth.getHeader());
 }
